@@ -1,0 +1,87 @@
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.net.URI;
+import java.util.Map;
+import java.util.Scanner;
+import com.google.gson.Gson;
+
+public class Main {
+
+    private static final String API_KEY = "a546be8524a533381c25d89e";
+    private static final String API_URL = "https://v6.exchangerate-api.com/v6/a546be8524a533381c25d89e/latest/USD";
+
+    public static void main(String[] args) throws Exception {
+
+        Scanner scanner = new Scanner(System.in);
+
+        HttpClient client = HttpClient.newHttpClient();
+
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(API_URL))
+                .GET()
+                .build();
+
+        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+
+
+       Gson gson = new Gson();
+        Map<String, Object> json = gson.fromJson(response.body(), Map.class);
+        Map<String, Double> tasas = (Map<String, Double>) json.get("conversion_rates");
+
+
+        double usd = tasas.get("USD");
+        double ars = tasas.get("ARS");
+        double brl = tasas.get("BRL");
+        double cop = tasas.get("COP");
+
+
+        System.out.println("===== VALORES DE MONEDAS (RESPECTO AL USD) =====");
+        System.out.println("USD (Dólar): " + usd);
+        System.out.println("ARS (Peso Argentino): " + ars);
+        System.out.println("BRL (Real Brasilero): " + brl);
+        System.out.println("COP (Peso Colombiano): " + cop);
+        System.out.println("=================================================\n");
+
+        int opcion;
+
+        do {
+            System.out.println("===== CONVERSOR DE MONEDAS =====");
+            System.out.println("1. USD → ARS");
+            System.out.println("2. ARS → USD");
+            System.out.println("3. USD → BRL");
+            System.out.println("4. BRL → USD");
+            System.out.println("5. USD → COP");
+            System.out.println("6. COP → USD");
+            System.out.println("0. SALIR");
+            System.out.print("Seleccione una opción: ");
+            opcion = scanner.nextInt();
+
+            if (opcion == 0) {
+                System.out.println("Saliendo del conversor...");
+                break;
+            }
+
+            System.out.print("Ingrese el monto a convertir: ");
+            double monto = scanner.nextDouble();
+            double resultado = 0;
+
+            switch (opcion) {
+                case 1: resultado = monto * ars; break;          // USD → ARS
+                case 2: resultado = monto / ars; break;          // ARS → USD
+                case 3: resultado = monto * brl; break;          // USD → BRL
+                case 4: resultado = monto / brl; break;          // BRL → USD
+                case 5: resultado = monto * cop; break;          // USD → COP
+                case 6: resultado = monto / cop; break;          // COP → USD
+                default:
+                    System.out.println("Opción inválida.");
+                    continue;
+            }
+
+            System.out.println("Resultado: " + resultado + "\n");
+
+        } while (opcion != 0);
+
+        scanner.close();
+    }
+}
