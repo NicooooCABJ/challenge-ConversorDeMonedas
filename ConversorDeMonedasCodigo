@@ -35,7 +35,6 @@ public class Main {
         double brl = tasas.get("BRL");
         double cop = tasas.get("COP");
 
-
         System.out.println("===== VALORES DE MONEDAS (RESPECTO AL USD) =====");
         System.out.println("USD (Dólar): " + usd);
         System.out.println("ARS (Peso Argentino): " + ars);
