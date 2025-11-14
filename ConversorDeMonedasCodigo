@@ -29,7 +29,6 @@ public class Main {
         Map<String, Object> json = gson.fromJson(response.body(), Map.class);
         Map<String, Double> tasas = (Map<String, Double>) json.get("conversion_rates");
 
-
         double usd = tasas.get("USD");
         double ars = tasas.get("ARS");
         double brl = tasas.get("BRL");
