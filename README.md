@@ -31,20 +31,12 @@ COP (Peso colombiano)
 Acontinuacion dejo algunas capturas de como utilizar el conversor 
 
 -Menu pricipal 
+"D:\Pictures\Screenshots\Captura de pantalla 2025-11-14 203847.png"
 
+-Selecciona una opcion de monedas que quieras convertir
+"D:\Pictures\Screenshots\Captura de pantalla 2025-11-14 203934.png"
 
+-Elige el monto que quieras convertir y enseguida mostrara el resultado del calculo de la conversion 
+"D:\Pictures\Screenshots\Captura de pantalla 2025-11-14 204017.png"
 
-### 📌 Menú principal
-*Agregá aquí una captura del menú del conversor.*
-
-### 📌 Resultados de conversión
-*Agregá aquí una captura mostrando una conversión realizada.*
-
-### 📌 Respuesta de la API
-*Captura opcional mostrando los valores obtenidos de la API.*
-
----
-
-## 🧠 ¿Cómo funciona?
-
-1. El programa realiza una petición HTTP a la API:
+-Luego de esto salddra otro menu para seguir utilizando el conversor y asi repetitivamente. 
